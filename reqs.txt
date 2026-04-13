@@ -1,0 +1,206 @@
+.
+
+📘 Functional Requirements Document (FRD)
+Project: Movie Recommendation System (Clustering + NLP Hybrid)
+
+🔷 1. System Overview
+The system is a hybrid movie recommendation platform that:
+Understands user intent (NLP) 
+Learns user taste (liked/disliked movies) 
+Uses clustering (K-Means) for grouping 
+Suggests movies based on similarity + behavior patterns 
+
+🔷 2. System Phases Overview
+
+🧩 PHASE 1: Data Handling & EDA
+1.1 Functional Requirements
+Load MovieLens dataset 
+Merge datasets (movies, ratings, tags) 
+Inspect structure and distributions 
+
+1.2 EDA Requirements
+A. Data Understanding
+Identify: 
+Number of users 
+Number of movies 
+Rating distribution 
+B. Visualization Requirements
+System should generate:
+Histogram → Ratings distribution 
+Bar chart → Genre frequency 
+Heatmap → User-Movie interaction 
+Boxplot → Rating spread 
+
+1.3 Behavior of System
+Automatically detect: 
+Missing values 
+Data imbalance 
+Sparse matrix issues 
+
+1.4 Outlier Detection
+System should:
+Identify extreme users (always 1 or 5 ratings) 
+Detect unpopular movies 
+Techniques:
+IQR 
+Z-score 
+
+🧩 PHASE 2: Preprocessing & Feature Engineering
+2.1 Functional Requirements
+A. Data Cleaning
+Remove duplicates 
+Handle missing values 
+Normalize genres 
+
+B. Feature Engineering
+System must create:
+1. User Feature Vector
+Based on ratings and preferences 
+2. Movie Feature Vector
+Genre encoding (One-hot) 
+Tag encoding 
+3. NLP Features
+TF-IDF on: 
+Tags 
+Descriptions 
+
+2.2 Data Transformation
+Convert data into matrix format 
+Normalize values (Min-Max / StandardScaler) 
+
+2.3 Behavior
+Ensure all features are numeric 
+Reduce sparsity 
+
+🧩 PHASE 3: Modeling & Clustering
+3.1 Functional Requirements
+A. Dimensionality Reduction
+Apply PCA before clustering 
+Purpose:
+Reduce noise 
+Improve clustering efficiency 
+
+B. Clustering Model
+Use:
+✅ K-Means
+System must:
+Automatically determine optimal K (Elbow Method) 
+Train clustering model 
+
+3.2 Behavior
+Assign: 
+Users → clusters 
+Movies → clusters 
+
+3.3 Output
+Cluster labels 
+Cluster centroids 
+
+🧩 PHASE 4: Recommendation Engine
+4.1 Functional Requirements
+Input Modes
+1. Genre-Based Input
+User selects genres 
+2. NLP-Based Input
+User types:
+"I want a funny sci-fi movie" 
+System:
+Extract keywords 
+Map to features 
+
+3. Preference-Based Input
+User provides:
+❤️ Loved movies 
+👍 Liked movies 
+👎 Disliked movies 
+
+4.2 Recommendation Logic
+Step 1: Build User Profile
+Weighted scoring: 
+Loved = +2 
+Liked = +1 
+Disliked = -1 
+
+Step 2: Match Cluster
+Find closest cluster 
+
+Step 3: Similarity Calculation
+Cosine similarity 
+
+Step 4: Ranking
+Top-N recommendations 
+
+4.3 Behavior
+Avoid recommending already watched movies 
+Adapt dynamically 
+
+🧩 PHASE 5: UI/UX SYSTEM
+5.1 Functional Requirements
+A. Home Screen
+Search bar (NLP input) 
+Genre selection panel 
+
+B. Preference Input Screen
+Add: 
+Loved movies 
+Liked movies 
+Disliked movies 
+
+C. Recommendation Screen
+Display: 
+Movie cards 
+Rating 
+Genre 
+Similarity score 
+
+5.2 UI Behavior
+Real-time updates 
+Interactive suggestions 
+Smooth transitions 
+
+5.3 UX Flow
+User Input → Processing → Recommendation → Feedback Loop
+
+🧩 PHASE 6: Evaluation & Optimization
+6.1 Functional Requirements
+System must evaluate using:
+Clustering Metrics
+Silhouette Score 
+Davies-Bouldin Index 
+
+Recommendation Metrics
+Precision@K 
+Recall@K 
+MAP 
+
+6.2 Behavior
+Automatically evaluate model performance 
+Tune parameters 
+
+🔷 7. System Architecture
+[ User Input ]
+     ↓
+[ NLP + Genre Processing ]
+     ↓
+[ Feature Engineering ]
+     ↓
+[ PCA ]
+     ↓
+[ K-Means Clustering ]
+     ↓
+[ Recommendation Engine ]
+     ↓
+[ UI Output ]
+
+🔷 8. Data Flow
+Raw Data → Cleaning → Feature Engineering → Vectorization → Clustering → Recommendation
+
+🔷 9. Key Functional Features
+✅ Mandatory
+Genre-based recommendations 
+NLP-based search 
+User preference system 
+🚀 Advanced
+Dynamic learning 
+Hybrid recommendation 
+Cold start handling 

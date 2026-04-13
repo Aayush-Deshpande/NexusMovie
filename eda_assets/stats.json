@@ -1,0 +1,1 @@
+{"total_users": 200948, "total_movies": 87585, "total_ratings": 32000204, "missing_movies": 0, "missing_tags": 17, "missing_ratings": 0, "sparsity": 99.8182, "outlier_users_iqr": 20109, "median_ratings_per_user": 73.0, "mean_rating": 3.5403956487277393, "std_rating": 1.05898621394531, "extreme_ratings_count": 0}

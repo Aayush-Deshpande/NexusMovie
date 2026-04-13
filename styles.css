@@ -1,0 +1,143 @@
+/* Modern, Clean typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap');
+
+/* Global Reset to minimal dark mode */
+body, .stApp {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #0d1117 !important; /* GitHub dark mode background */
+    color: #e6edf3 !important;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif !important;
+    color: #ffffff !important;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+/* Sidebar and containers */
+div.css-1r6slb0, div.css-18e3th9, .stSidebar {
+    background-color: #161b22 !important; /* Slightly lighter dark panel */
+    border-right: 1px solid #30363d !important;
+}
+
+/* Text Gradients (Subtle) */
+.gradient-text {
+    background: linear-gradient(90deg, #58a6ff 0%, #a371f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* Clean UI Cards */
+.movie-card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card:hover {
+    transform: translateY(-3px);
+    border-color: #58a6ff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.movie-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    padding-right: 85px; /* Prevent score clipping */
+    line-height: 1.4;
+}
+
+.movie-genres {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.genre-tag {
+    background-color: #21262d;
+    color: #8b949e;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    font-size: 0.75rem;
+}
+
+.score-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #238636; /* Clean success green */
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Base Inputs */
+.stTextInput > div > div > input {
+    background-color: #0d1117 !important;
+    border: 1px solid #30363d !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    transition: all 0.2s ease;
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: #58a6ff !important;
+    box-shadow: 0 0 0 1px #58a6ff !important;
+}
+
+/* Primary Button */
+.stButton > button {
+    background-color: #238636 !important;
+    border: 1px solid rgba(240, 246, 252, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.stButton > button:hover {
+    background-color: #2ea043 !important;
+}
+
+/* Multiselect Styling overrides */
+.stMultiSelect > div > div {
+    background-color: #0d1117 !important;
+    border: 1px solid #30363d !important;
+    color: white !important;
+}
+
+/* Metric / KPI Cards Customization */
+div[data-testid="metric-container"] {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Table overrides for Baselines */
+.stDataFrame {
+    background-color: #161b22 !important;
+    border-radius: 12px !important;
+    border: 1px solid #30363d !important;
+}
