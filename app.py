@@ -126,52 +126,11 @@ with tab1:
             if os.path.exists('eda_assets/k_sweep.png'):
                 st.image("eda_assets/k_sweep.png", use_container_width=True, caption="Elbow vs Silhouette Analysis Sweep (K=5 to 50)")
 
-        st.markdown("### 2. Supervised Target Evaluation (Implicit Preference >= 4.0)")
-        try:
-            with open('eda_assets/classifier_stats.json', 'r') as f:
-                c_stats = json.load(f)
-            
-            c_m = c_stats.get("Metrics", {})
-            st.markdown("#### Classifier Core Matrix")
-            m1, m2, m3, m4, m5, m6 = st.columns(6)
-            m1.metric("Accuracy", f"{c_m.get('Accuracy', 0)}")
-            m2.metric("Precision", f"{c_m.get('Precision', 0)}")
-            m3.metric("Recall", f"{c_m.get('Recall', 0)}")
-            m4.metric("F1-Score", f"{c_m.get('F1-Score', 0)}")
-            m5.metric("Sensitivity", f"{c_m.get('Sensitivity', 0)}")
-            m6.metric("Specificity", f"{c_m.get('Specificity', 0)}")
-            
-            col_v1, col_v2 = st.columns(2)
-            with col_v1:
-                st.image("eda_assets/pie_class_dist.png", use_container_width=True)
-            with col_v2:
-                st.image("eda_assets/bar_feature_corr.png", use_container_width=True)
-                
-            st.markdown("#### Predictive Curves & Threshold Architecture")
-            r1, r2 = st.columns(2)
-            with r1:
-                st.image("eda_assets/roc_curves.png", use_container_width=True)
-            with r2:
-                st.image("eda_assets/pr_curves.png", use_container_width=True)
-            
-            st.markdown("#### Internal Feature Logic")
-            st.image("eda_assets/bar_feat_importance.png", use_container_width=True)
-            
-            st.markdown("#### Global Threshold Optimizer Sweep")
-            df_th = pd.DataFrame(c_stats.get("Thresholds", []))
-            st.dataframe(df_th.style.highlight_max(axis=0, subset=["F1"], color="#238636"), use_container_width=True)
-            
-        except Exception as e:
-            st.error(f"Waiting for classifier offline pipeline computations... ({e})")
-
-        st.markdown("### 3. Comparison Baselines & Algorithms")
+        st.markdown("### Comparison Baselines & Algorithms")
         baselines = eval_stats.get('baselines', {})
         if baselines:
             df_base = pd.DataFrame(baselines).T
-            st.dataframe(df_base.style.highlight_max(axis=0, color='#238636'), use_container_width=True)
-            
-        st.markdown("---")
-        st.success("**Recommendations Strategy Deploy Card:** The Hybrid Engine out-competes conventional Collaborative SVD algorithms significantly when handling high-sparsity records. Target deployment via Dockerized container endpoints utilizing static Parquet extraction mapped explicitly against the NLP Matrix.")
+            st.dataframe(df_base.style.highlight_max(axis=0, color='#238636'))
         
 with tab2:
     st.markdown("### Semantic Match Engine")
